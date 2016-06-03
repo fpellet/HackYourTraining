@@ -24,5 +24,5 @@ We could build pull based training instead of push based training:
 In exchange they receive free tickets for the training
 
 It's really just a draft, feel free to improve the idea and share with us on slack:
-https://softwarecraftsmanship.slack.com
-#hackyourtraining
+https://softwarecraftsmanship.slack.com on the channel hackyourtraining
+
