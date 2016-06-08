@@ -21,6 +21,7 @@ We could build pull based training instead of push based training:
 - In the meantime, a sponsorship request is send to pre-identified local sponsors to provide:
 	* food
 	* rooms
+
 In exchange they receive free tickets for the training
 
 It's really just a draft, feel free to improve the idea and share with us on slack:
