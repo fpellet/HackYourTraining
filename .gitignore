@@ -1,4 +1,3 @@
 .fake/*
 .paket/*
 packages/*
-paket.lock
