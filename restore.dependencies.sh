@@ -14,7 +14,7 @@ if [ ! -f ".paket/paket.exe" ]; then
   mono .paket/paket.bootstrapper.exe prerelease
 fi
 
-if [ ! -f ".paket.lock" ]; then
+if [ ! -f "paket.lock" ]; then
   echo "Installing dependencies"
   mono .paket/paket.exe install
 fi
