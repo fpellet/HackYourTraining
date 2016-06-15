@@ -5,25 +5,31 @@ But trainings are expensive. How can we disrupt classical training with the help
 
 What about an open source platform to bring together trainers and trainees, removing intermediaries.
 
-We could build pull based training instead of push based training:
+We could build pull based training instead of classic push based training:
 - Anybody can register on the platform using Twitter
 - Users could create a "request for training" with:
 	* a topic
 	* a city
 	* a speaker
 	* optionally a time window
-- Other users can see the request and register as "interesting by the this request for training"
+** NB: Duration (nb days) ? **
+- Other users can see the request and register as "interested by this request for training"
+** NB: don't we should require an amount affordable for the training ? (or amount/day if no duration specified) **
 - As soon as we reach a certain threshold, a tweet is send to the trainer
-- If the trainer follow the link from Twitter, he sees the "request for training" information, he can then provide:
-	* some precise date where he's available
+- If the trainer follows the link from Twitter, he/she sees the "request for training" information, and he/she can provide:
+	* some precise date he/she's available
 	* the total price to reach for the training to happen
-- The register users then received an update and can pay if they still want to participate
-- In the meantime, a sponsorship request is send to pre-identified local sponsors to provide:
+- Then, registered users receive an update and can pay if they still want to participate
+** NB: how much users pay? **
+- In the meantime, a sponsorship request is sent to pre-identified local sponsors to provide:
 	* food
 	* rooms
-
-In exchange they receive free tickets for the training
+	* in exchange they receive free tickets for the training.
 
 It's really just a draft, feel free to improve the idea and share with us on slack:
 https://softwarecraftsmanship.slack.com on the channel hackyourtraining
 
+## Participate to development
+
+You can develop under Linux/OSX/Windows equally, just run the right `restore.and.build.*` script according your platform.
+It restores dependencies through Paket and run Fake script to start Suave.io web server (in dev mode, watching changed files).
