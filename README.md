@@ -12,15 +12,12 @@ We could build pull based training instead of classic push based training:
 	* a city
 	* a speaker
 	* optionally a time window
-** NB: Duration (nb days) ? **
 - Other users can see the request and register as "interested by this request for training"
-** NB: don't we should require an amount affordable for the training ? (or amount/day if no duration specified) **
 - As soon as we reach a certain threshold, a tweet is send to the trainer
 - If the trainer follows the link from Twitter, he/she sees the "request for training" information, and he/she can provide:
 	* some precise date he/she's available
-	* the total price to reach for the training to happen
+	* the price for the training
 - Then, registered users receive an update and can pay if they still want to participate
-** NB: how much users pay? **
 - In the meantime, a sponsorship request is sent to pre-identified local sponsors to provide:
 	* food
 	* rooms
