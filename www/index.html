@@ -1,25 +1,76 @@
 <html>
 <head>
-    <title>Hack your training</title>
+    <title>Hack Your Training</title>
     <link href="/app.css" type="text/css" rel="stylesheet">
     <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
 </head>
 <body ng-app="hackYourTraining" ng-cloak>
-<div ng-controller="hackYourTrainingController as hack" id="container">
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">HackYourTraining</a>
+            </div>
 
-    <h1>Welcome to Hack Your Training</h1>
-    <br>
-    <h2>The Lyon's community would like to be trained on CQRS/ES by <a href="https://twitter.com/gregyoung" target="_blank">Greg Young</a> in september 2016</h1>
-        <br>
-        <h3>Currently interested people (3/15)</h3>
-        <ul>
-            <li ng-repeat="trainee in hack.interestedTrainees">
-                <a ng-href="{{trainee.twitterUrl}}">{{trainee.name}}</a>
-            </li>
-        </ul>
-</div>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
-<script src="/app.js"></script>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#/about">About</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" ng-controller="hackYourTrainingController as hack">
+        <div class="row hyt-home">
+            <div class="hyt-home-content">
+                <h1>Hack Your Training</h1>
+                <h2>Training by the community and for the community</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <h1 class="hyt-title">Last training proposal</h1>
+        </div>
+
+        <div class="row hyt-proposal">
+            <img src="greg_young.jpg" class="hyt-proposal-picture" />
+            <h2 class="hyt-proposal-title">Greg Young (Lyon - September)</h2>
+            <p class="hyt-content">
+                <a href="https://twitter.com/Ouarzy">Emilien Pecoul</a>
+                propose <a href="https://twitter.com/gregyoung">Greg Young</a>
+                at <a href="https://www.google.fr/maps/place/Lyon">Lyon</a>
+                in september 2016
+            </p>
+            <p class="hyt-content">
+                Greg Young coined the term CQRS (Command Query Responsibility Segregation) and it was instantly picked up by the community who have elaborated upon it ever since.
+                <br />
+                Greg is an independent consultant and serial entrepreneur. He has 10+ years of varied experience in computer science from embedded operating systems to business
+                systems and he brings a pragmatic and often times unusual viewpoint to discussions.
+                <br />
+                He's a frequent contributor to InfoQ, speaker/trainer at Skills Matter and also a well-known speaker at international conferences.
+                Greg also writes about CQRS, DDD and other hot topics on www.codebetter.com.
+            </p>
+            <p class="hyt-content">
+                Currently interested people (4/15) :
+                    <span class="hyt-proposal-people" ng-repeat="trainee in hack.interestedTrainees">
+                        <a ng-href="{{trainee.twitterUrl}}">{{trainee.name}}</a>
+                    </span>
+            </p>
+        </div>
+
+        <div class="row">
+            <h1 id="/about" class="hyt-title">About</h1>
+        </div>
+
+        <div class="row">
+            <p class="hyt-content">
+                This project is open. You can contribute on <a href="https://github.com/fpellet/HackYourTraining">github</a>
+                and on <a href="https://softwarecraftsmanship.slack.com/messages/hackyourtraining/">slack</a>.
+            </p>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.min.js"></script>
+    <script src="/app.js"></script>
 </body>
 </html>
