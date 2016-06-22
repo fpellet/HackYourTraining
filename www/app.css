@@ -53,3 +53,13 @@ body {
 .hyt-proposal-people:last-child a::after {
      content: "."
  }
+
+.hyt-proposal-registerButton {
+    padding: 10px 40px;
+    font-size: 3rem;
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 250px;
+}
