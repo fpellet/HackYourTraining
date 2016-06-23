@@ -1,3 +1,8 @@
-.fake/*
-.paket/*
-packages/*
+.fake/
+.paket/
+packages/
+.vs/
+bin/
+obj/
+build/
+
