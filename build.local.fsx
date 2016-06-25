@@ -37,4 +37,8 @@ Target "watch" (fun _ ->
         |> ignore
 )
 
+"build"
+    ==> "run"
+    ==> "watch"
+
 RunTargetOrDefault "build"
