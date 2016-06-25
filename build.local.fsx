@@ -47,6 +47,10 @@ Target "watch" (fun _ ->
     !! (__SOURCE_DIRECTORY__ </> "*.fs") 
         |> WatchChanges reload 
         |> ignore
+
+    ()
+    |> waitUserStopRequest
+    |> stop
 )
 
 "build"
