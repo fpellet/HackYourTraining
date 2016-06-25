@@ -18,17 +18,29 @@ let run () = run' (directExec>>ignore)
 
 let runAndForget () = run' fireAndForget
 
+let stop () = killProcess "HackYourTraining"
+
+let waitUserStopRequest () = 
+    () |> traceLine |> traceLine
+    traceImportant "Press any key to stop."
+    () |> traceLine |> traceLine
+
+    System.Console.ReadLine() |> ignore
+
 Target "build" (fun _ -> 
     build () |> ignore
 )
 
 Target "run" (fun _ -> 
-    run ()
+    ()
+    |> runAndForget
+    |> waitUserStopRequest
+    |> stop
 )
 
 Target "watch" (fun _ -> 
     let reload _ =
-        killProcess "HackYourTraining"
+        stop ()
         build () |> ignore
         runAndForget ()
 
