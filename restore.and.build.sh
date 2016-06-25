@@ -1,4 +1,4 @@
-echo off
+#!/bin/bash
 
 if [ ! -f ".paket/paket.exe" ]; then
   echo "Downloading Paket"
@@ -8,5 +8,5 @@ fi
 echo "Restoring dependencies"
 mono .paket/paket.exe restore
 
-echo "Running web server"
-mono packages/FAKE/tools/FAKE.exe run --fsiargs build.local.fsx
+echo "Build server"
+mono packages/FAKE/tools/FAKE.exe build.local.fsx $@

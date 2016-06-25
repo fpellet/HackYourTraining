@@ -50,7 +50,6 @@
     <Compile Include="AssemblyInfo.fs" />
     <Compile Include="app.fs" />
     <Compile Include="Program.fs" />
-    <None Include="staticSite.fsx" />
     <None Include="app.fsx" />
     <None Include="build.local.fsx" />
   </ItemGroup>
