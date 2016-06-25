@@ -9,16 +9,14 @@ let build () =
     MSBuildHelper.MSBuildLoggers <- []
     MSBuildDebug "./build" "Build" [__SOURCE_DIRECTORY__ + "/HackYourTraining.fsproj"]
 
-let run' (runner: (ProcessStartInfo -> unit) -> unit) =
-    runner (fun info -> 
+let runAndForget () = 
+    fireAndForget (fun info -> 
         info.FileName <- "./build/HackYourTraining.exe"
         info.Arguments <- Path.Combine(__SOURCE_DIRECTORY__, "www") + " 8083")
 
-let run () = run' (directExec>>ignore)
-
-let runAndForget () = run' fireAndForget
-
 let stop () = killProcess "HackYourTraining"
+
+let reload = stop >> build >> ignore >> runAndForget
 
 let waitUserStopRequest () = 
     () |> traceLine |> traceLine
@@ -26,32 +24,22 @@ let waitUserStopRequest () =
     () |> traceLine |> traceLine
 
     System.Console.ReadLine() |> ignore
-
-Target "build" (fun _ -> 
-    build () |> ignore
-)
-
-Target "run" (fun _ -> 
-    ()
-    |> runAndForget
-    |> waitUserStopRequest
-    |> stop
-)
-
-Target "watch" (fun _ -> 
-    let reload _ =
-        stop ()
-        build () |> ignore
-        runAndForget ()
-
+    
+let watchSource action =
     !! (__SOURCE_DIRECTORY__ </> "*.fs") 
-        |> WatchChanges reload 
+        |> WatchChanges (fun _ -> action ())
         |> ignore
 
-    ()
-    |> waitUserStopRequest
-    |> stop
-)
+let reloadOnChange () =
+    watchSource reload
+
+let askStop = waitUserStopRequest >> stop
+
+Target "build" (build >> ignore)
+
+Target "run" (runAndForget >> askStop)
+
+Target "watch" (runAndForget >> reloadOnChange >> askStop)
 
 "build"
     ==> "run"
