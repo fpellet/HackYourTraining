@@ -9,32 +9,42 @@ let build () =
     MSBuildHelper.MSBuildLoggers <- []
     MSBuildDebug "./build" "Build" [__SOURCE_DIRECTORY__ + "/HackYourTraining.fsproj"]
 
-let run' (runner: (ProcessStartInfo -> unit) -> unit) =
-    runner (fun info -> 
+let runAndForget () = 
+    fireAndForget (fun info -> 
         info.FileName <- "./build/HackYourTraining.exe"
         info.Arguments <- Path.Combine(__SOURCE_DIRECTORY__, "www") + " 8083")
 
-let run () = run' (directExec>>ignore)
+let stop () = killProcess "HackYourTraining"
 
-let runAndForget () = run' fireAndForget
+let reload = stop >> build >> ignore >> runAndForget
 
-Target "build" (fun _ -> 
-    build () |> ignore
-)
+let waitUserStopRequest () = 
+    () |> traceLine |> traceLine
+    traceImportant "Press any key to stop."
+    () |> traceLine |> traceLine
 
-Target "run" (fun _ -> 
-    run ()
-)
-
-Target "watch" (fun _ -> 
-    let reload _ =
-        killProcess "HackYourTraining"
-        build () |> ignore
-        runAndForget ()
-
+    System.Console.ReadLine() |> ignore
+    
+let watchSource action =
     !! (__SOURCE_DIRECTORY__ </> "*.fs") 
-        |> WatchChanges reload 
+        |> WatchChanges (fun _ -> action ())
         |> ignore
-)
+
+let reloadOnChange () =
+    watchSource reload
+
+let askStop = waitUserStopRequest >> stop
+
+Target "build" (build >> ignore)
+
+Target "run" (runAndForget >> askStop)
+
+Target "watch" (runAndForget >> reloadOnChange >> askStop)
+
+"build"
+    ==> "run"
+
+"build"
+    ==> "watch"
 
 RunTargetOrDefault "build"
