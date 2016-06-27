@@ -53,10 +53,10 @@
                 Greg also writes about CQRS, DDD and other hot topics on www.codebetter.com.
             </p>
             <p class="hyt-content">
-                Currently interested people (4/15) :
-                    <span class="hyt-proposal-people" ng-repeat="trainee in hack.interestedTrainees">
-                        <a ng-href="{{trainee.twitterUrl}}">{{trainee.name}}</a>
-                    </span>
+                Currently interested people (<span ng-bind="hack.nbInterestedTrainees"></span>/15) :
+                <span class="hyt-proposal-people" ng-repeat="trainee in hack.interestedTrainees">
+                   <a ng-href="{{trainee.twitterUrl}}">{{trainee.name}}</a>
+                </span>
             </p>
         </div>
 
