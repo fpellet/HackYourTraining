@@ -1,3 +1,4 @@
+#I "packages/FAKE/tools" //used for linux build
 #r "packages/FAKE/tools/FakeLib.dll"
 
 open Fake
