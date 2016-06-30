@@ -22,8 +22,9 @@ let interestedTrainees =
      "Jean Helou", "https://twitter.com/jeanhelou"
      "Yannick Ringapin", "https://twitter.com/BlackBeard486";
      "Kevin Lejeune", "https://twitter.com/kevin_le_jeune";
-     "Karol Chmist", "https://twitter.com/karolchmist"
+     "Karol Chmist", "https://twitter.com/karolchmist";
      "Gregory Cica", "";
+     "Samuel Pecoul", "https://twitter.com/SamPecoul"
      ]
 
 let getInterestedTrainees =
