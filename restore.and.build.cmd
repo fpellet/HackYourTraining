@@ -9,5 +9,4 @@ if not exist .paket\paket.exe (
 .paket\paket.exe restore
 
 @echo "Build server"
-set encoding=utf-8
-packages\FAKE\tools\FAKE.exe build.local.fsx %*
+.\fake.cmd
