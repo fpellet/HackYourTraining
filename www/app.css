@@ -63,3 +63,17 @@ body {
     margin-right: auto;
     width: 250px;
 }
+
+@media screen and (max-width: 570px) {
+    .hyt-home-content {
+        margin-right: 10px;
+        margin-left: 10px;
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+
+    .hyt-content {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
